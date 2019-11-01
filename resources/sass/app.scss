@@ -7,12 +7,6 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.white-link {
-    a:hover {
-        color: $color-white !important;
-    }
-}
-
 .counters {
     margin-right: 30px;
     font-size: 12px;
@@ -47,4 +41,14 @@
     .view {
         margin-top: 10px;
     }
+}
+
+.white-link {
+    a:hover {
+        color: $color-white !important;
+    }
+}
+
+form.form-delete {
+    display: inline;
 }

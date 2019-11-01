@@ -11100,10 +11100,6 @@ a.text-dark:focus {
   }
 }
 
-.white-link a:hover {
-  color: #fff !important;
-}
-
 .counters {
   margin-right: 30px;
   font-size: 12px;
@@ -11137,5 +11133,13 @@ a.text-dark:focus {
 
 .counters .view {
   margin-top: 10px;
+}
+
+.white-link a:hover {
+  color: #fff !important;
+}
+
+form.form-delete {
+  display: inline;
 }
 

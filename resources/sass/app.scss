@@ -7,6 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.white-link {
+    a:hover {
+        color: $color-white !important;
+    }
+}
+
 .counters {
     margin-right: 30px;
     font-size: 12px;

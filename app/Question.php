@@ -23,6 +23,11 @@ class Question extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
+    //public function setBodyAttribute($value)
+    //{
+    //   $this->attributes['body'] = clean($value); -> drugi nacin, public function getBodyHtmlAttribute()
+    //}
+
     public function getUrlAttribute()
     {
         return route('questions.show', $this->slug);
@@ -45,6 +50,21 @@ class Question extends Model
     }
 
     public function getBodyHtmlAttribute()
+    {
+        return clean($this->bodyHtml());
+    }
+
+    public function getExcerptAttribute()
+    {
+        return $this->excerpt(250);
+    }
+
+    public function excerpt($length)
+    {
+        return Str::limit(strip_tags($this->bodyHtml()), $length);
+    }
+
+    private function bodyHtml()
     {
         return Parsedown::instance()->text($this->body);
     }

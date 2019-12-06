@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswersController extends Controller
 {
@@ -22,7 +23,7 @@ class AnswersController extends Controller
 
         $question->answers()->create($request->validate([
             'body' => 'required'
-        ]) + ['user_id' => \Auth::id()]);
+        ]) + ['user_id' => Auth::id()]);
         return back()->with('success', 'Your answer has been submitted successfully');
     }
 
@@ -72,6 +73,12 @@ class AnswersController extends Controller
     {
         $this->authorize('delete', $answer);
         $answer->delete();
+
+        if(request()->expectsJson()) {
+            return response()->json([
+                'message' => 'Your answer has been removed'
+            ]);
+        }
         return back()->with('success', 'Your answer has been removed');
     }
 }
